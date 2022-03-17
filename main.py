@@ -9,8 +9,24 @@ import sys
 
 
 def main():
-    print('Number of arguments:', len(sys.argv), 'arguments.')
-    print('Argument List:', str(sys.argv))
+    variables = {}
+    constraints = []
+    forwardChecking = False
+
+    with open(sys.argv[1], 'r') as file:
+        for variable in file:
+            variable = variable.strip().split(': ')
+            variables[variable[0]] = variable[1].split(' ')
+
+    with open(sys.argv[2], 'r') as file:
+        for constraint in file:
+            constraint = constraint.strip().split(' ')
+            constraints.append(constraint)
+
+    if sys.argv[3] != 'none':
+        forwardChecking = True
+
+    print('test')
 
 
 if __name__ == '__main__':
